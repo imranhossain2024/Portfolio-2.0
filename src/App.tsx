@@ -90,6 +90,7 @@ export default function DeveloperImranPortfolio() {
       image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80",
       live: "https://dragon-news-355a7.firebaseapp.com/category/01",
       github: "https://github.com/imranhossain2024",
+      primaryActionLabel: "Live Demo",
       accent: "from-blue-500 to-cyan-500"
     },
     {
@@ -99,7 +100,17 @@ export default function DeveloperImranPortfolio() {
       image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
       live: "https://github.com/imranhossain2024/job-apply",
       github: "https://github.com/imranhossain2024/job-apply",
+      primaryActionLabel: "GitHub Repo",
       accent: "from-purple-500 to-indigo-500"
+    },
+    {
+      title: "Blood Donation Platform",
+      description: "A modern blood donation web application designed to connect donors and recipients through a clean interface, clear calls to action, and accessible donation-focused content.",
+      stack: ["React.js", "Tailwind CSS", "Responsive Design", "Vercel"],
+      image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1200&q=80",
+      live: "https://blood-donation-roan.vercel.app/",
+      primaryActionLabel: "Live Demo",
+      accent: "from-rose-500 to-red-500"
     }
   ];
 
@@ -395,17 +406,17 @@ export default function DeveloperImranPortfolio() {
                        <p className="text-muted-foreground text-base leading-[1.7] mb-8 font-medium">
                          {project.description}
                        </p>
-                       <div className="mt-auto flex gap-4">
-                         <Button size="lg" className="rounded-xl flex-1 font-bold">
-                           <a href={project.live} target="_blank" className="w-full">
-                             {project.title.includes("Job Apply") ? "GitHub Repo" : "Live Demo"}
-                           </a>
-                         </Button>
-                         {project.title.includes("Dragon News") && (
-                           <Button variant="outline" size="lg" className="rounded-xl flex-1 font-bold">
-                             <a href={project.github} target="_blank" className="w-full">View Code</a>
-                           </Button>
-                         )}
+                        <div className="mt-auto flex gap-4">
+                          <Button size="lg" className="rounded-xl flex-1 font-bold">
+                            <a href={project.live} target="_blank" className="w-full">
+                              {project.primaryActionLabel}
+                            </a>
+                          </Button>
+                          {project.github && (
+                            <Button variant="outline" size="lg" className="rounded-xl flex-1 font-bold">
+                              <a href={project.github} target="_blank" className="w-full">View Code</a>
+                            </Button>
+                          )}
                        </div>
                     </CardContent>
                   </Card>
