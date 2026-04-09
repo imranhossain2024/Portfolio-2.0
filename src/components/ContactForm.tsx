@@ -29,6 +29,7 @@ const ContactForm = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [messageCharCount, setMessageCharCount] = useState(0);
 
   const validateForm = () => {
     const errors: Record<string, string> = {};
@@ -137,7 +138,7 @@ const ContactForm = () => {
                   id="user_name"
                   name="user_name" 
                   placeholder="Imran Hossain" 
-                  className={`bg-accent/50 rounded-xl h-12 ${formErrors.user_name ? 'border-destructive/50 ring-destructive/20' : ''}`}
+                  className={`bg-accent/50 rounded-xl h-12 transition-all duration-300 ${formErrors.user_name ? 'border-destructive ring-2 ring-destructive/20' : 'focus:ring-2 focus:ring-primary/20'}`}
                 />
               </div>
               <div className="space-y-2">
@@ -149,7 +150,7 @@ const ContactForm = () => {
                   name="user_email" 
                   placeholder="imran@example.com" 
                   type="email" 
-                  className={`bg-accent/50 rounded-xl h-12 ${formErrors.user_email ? 'border-destructive/50 ring-destructive/20' : ''}`}
+                  className={`bg-accent/50 rounded-xl h-12 transition-all duration-300 ${formErrors.user_email ? 'border-destructive ring-2 ring-destructive/20' : 'focus:ring-2 focus:ring-primary/20'}`}
                 />
               </div>
             </div>
@@ -162,19 +163,26 @@ const ContactForm = () => {
                 id="subject"
                 name="subject" 
                 placeholder="Let's collaborate on a MERN project" 
-                className={`bg-accent/50 rounded-xl h-12 ${formErrors.subject ? 'border-destructive/50 ring-destructive/20' : ''}`}
+                className={`bg-accent/50 rounded-xl h-12 transition-all duration-300 ${formErrors.subject ? 'border-destructive ring-2 ring-destructive/20' : 'focus:ring-2 focus:ring-primary/20'}`}
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-semibold flex justify-between">
-                Message {formErrors.message && <span className="text-destructive text-[10px] uppercase">{formErrors.message}</span>}
+              <label htmlFor="message" className="text-sm font-semibold flex justify-between items-center">
+                <span className="flex items-center gap-2">
+                  Message {formErrors.message && <span className="text-destructive text-[10px] uppercase">{formErrors.message}</span>}
+                </span>
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${messageCharCount >= 950 ? 'text-destructive' : 'text-muted-foreground'}`}>
+                  {messageCharCount} / 1000
+                </span>
               </label>
               <Textarea 
                 id="message"
                 name="message" 
                 placeholder="Tell me about your project..." 
-                className={`bg-accent/50 rounded-2xl min-h-[150px] ${formErrors.message ? 'border-destructive/50 ring-destructive/20' : ''}`}
+                maxLength={1000}
+                onChange={(e) => setMessageCharCount(e.target.value.length)}
+                className={`bg-accent/50 rounded-2xl min-h-[150px] transition-all duration-300 ${formErrors.message ? 'border-destructive ring-2 ring-destructive/20' : 'focus:ring-2 focus:ring-primary/20'}`}
               />
             </div>
 

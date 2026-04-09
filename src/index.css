@@ -4,26 +4,58 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --font-heading: "Outfit", system-ui, sans-serif;
   
-  --color-background: #020617;
-  --color-foreground: #f8fafc;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
   
   --color-primary: #aa3bff;
   --color-primary-foreground: #ffffff;
   
-  --color-secondary: #0f172a;
-  --color-secondary-foreground: #f8fafc;
+  --color-secondary: #e2e8f0;
+  --color-secondary-foreground: #0f172a;
   
-  --color-muted: #1e293b;
-  --color-muted-foreground: #94a3b8;
+  --color-muted: #e2e8f0;
+  --color-muted-foreground: #475569;
   
-  --color-accent: #1e293b;
-  --color-accent-foreground: #f8fafc;
+  --color-accent: #eef2ff;
+  --color-accent-foreground: #0f172a;
   
-  --color-border: #1e293b;
-  --color-input: #1e293b;
+  --color-border: #cbd5e1;
+  --color-input: #cbd5e1;
+  --color-ring: #aa3bff;
+  --color-destructive: #dc2626;
 }
 
 @layer base {
+  :root {
+    --color-background: #f8fafc;
+    --color-foreground: #0f172a;
+    --color-secondary: #e2e8f0;
+    --color-secondary-foreground: #0f172a;
+    --color-muted: #e2e8f0;
+    --color-muted-foreground: #475569;
+    --color-accent: #eef2ff;
+    --color-accent-foreground: #0f172a;
+    --color-border: #cbd5e1;
+    --color-input: #cbd5e1;
+    --color-ring: #aa3bff;
+    --color-destructive: #dc2626;
+  }
+
+  .dark {
+    --color-background: #020617;
+    --color-foreground: #f8fafc;
+    --color-secondary: #0f172a;
+    --color-secondary-foreground: #f8fafc;
+    --color-muted: #1e293b;
+    --color-muted-foreground: #94a3b8;
+    --color-accent: #1e293b;
+    --color-accent-foreground: #f8fafc;
+    --color-border: #1e293b;
+    --color-input: #334155;
+    --color-ring: #c084fc;
+    --color-destructive: #f87171;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -33,6 +65,9 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-image:
+      radial-gradient(circle at top left, rgba(170, 59, 255, 0.12), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 28%);
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
@@ -41,11 +76,15 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/80 backdrop-blur-xl border border-white/30 shadow-xl;
+    @apply border backdrop-blur-xl shadow-xl;
+    background-color: rgba(255, 255, 255, 0.84);
+    border-color: rgba(148, 163, 184, 0.35);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
   }
   :is(.dark) .glass {
     background-color: rgba(2, 6, 23, 0.85);
     border-color: rgba(30, 41, 59, 0.5);
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.45);
   }
   
   .glass-dark {
@@ -65,6 +104,17 @@
     50% { opacity: 0; }
   }
 
+  .blob {
+    animation: blob 7s infinite;
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
   .perspective-1000 {
     perspective: 1000px;
   }
@@ -80,5 +130,5 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-muted rounded-full border-2 border-background hover:bg-muted-foreground transition-colors;
+  @apply bg-primary/30 rounded-full border-2 border-background hover:bg-primary/50 transition-all duration-300;
 }

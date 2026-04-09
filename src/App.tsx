@@ -18,18 +18,27 @@ import {
   Sparkles,
   Sun,
   Terminal,
-  X
+  X,
+  Copy,
+  Check,
+  ArrowUp
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 export default function DeveloperImranPortfolio() {
   const [darkMode, setDarkMode] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [copied, setCopied] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      setShowScrollTop(window.scrollY > 500);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -68,6 +77,17 @@ export default function DeveloperImranPortfolio() {
     }
   }, [darkMode]);
 
+  const copyToClipboard = useCallback((text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setToastVisible(true);
+      setTimeout(() => {
+        setCopied(false);
+        setToastVisible(false);
+      }, 3000);
+    });
+  }, []);
+
   const navItems = [
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
@@ -84,13 +104,21 @@ export default function DeveloperImranPortfolio() {
 
   const projects = [
     {
+      title: "BloodBond — Blood Donation Network",
+      description: "A comprehensive MERN stack platform connecting blood donors with recipients. Features real-time coordination, verified matching, and a robust admin dashboard for tracking donations.",
+      stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      image: "https://images.unsplash.com/photo-1615461066841-6116ecaaba7d?auto=format&fit=crop&w=1200&q=80",
+      live: "https://blood-donation-roan.vercel.app/",
+      github: "https://github.com/imranhossain2024",
+      accent: "from-red-500 to-rose-600"
+    },
+    {
       title: "Dragon News Web Application",
       description: "A responsive React based news web application that loads dynamic news from API. The project includes Firebase authentication for login and registration, category-based news filtering, and a fully mobile responsive UI.",
       stack: ["React.js", "JavaScript", "Firebase Auth", "REST API", "Tailwind CSS"],
       image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80",
       live: "https://dragon-news-355a7.firebaseapp.com/category/01",
       github: "https://github.com/imranhossain2024",
-      primaryActionLabel: "Live Demo",
       accent: "from-blue-500 to-cyan-500"
     },
     {
@@ -100,17 +128,7 @@ export default function DeveloperImranPortfolio() {
       image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=80",
       live: "https://github.com/imranhossain2024/job-apply",
       github: "https://github.com/imranhossain2024/job-apply",
-      primaryActionLabel: "GitHub Repo",
       accent: "from-purple-500 to-indigo-500"
-    },
-    {
-      title: "Blood Donation Platform",
-      description: "A modern blood donation web application designed to connect donors and recipients through a clean interface, clear calls to action, and accessible donation-focused content.",
-      stack: ["React.js", "Tailwind CSS", "Responsive Design", "Vercel"],
-      image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1200&q=80",
-      live: "https://blood-donation-roan.vercel.app/",
-      primaryActionLabel: "Live Demo",
-      accent: "from-rose-500 to-red-500"
     }
   ];
 
@@ -118,8 +136,9 @@ export default function DeveloperImranPortfolio() {
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground">
       {/* Background Orbs */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] rounded-full animate-pulse [animation-delay:2s]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full blob" />
+        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-indigo-500/10 blur-[120px] rounded-full blob [animation-delay:2s]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full blob [animation-delay:4s]" />
       </div>
 
       {/* Navigation */}
@@ -406,17 +425,17 @@ export default function DeveloperImranPortfolio() {
                        <p className="text-muted-foreground text-base leading-[1.7] mb-8 font-medium">
                          {project.description}
                        </p>
-                        <div className="mt-auto flex gap-4">
-                          <Button size="lg" className="rounded-xl flex-1 font-bold">
-                            <a href={project.live} target="_blank" className="w-full">
-                              {project.primaryActionLabel}
-                            </a>
-                          </Button>
-                          {project.github && (
-                            <Button variant="outline" size="lg" className="rounded-xl flex-1 font-bold">
-                              <a href={project.github} target="_blank" className="w-full">View Code</a>
-                            </Button>
-                          )}
+                       <div className="mt-auto flex gap-4">
+                         <Button size="lg" className="rounded-xl flex-1 font-bold">
+                           <a href={project.live} target="_blank" className="w-full">
+                             {project.live.includes("github.com") ? "GitHub Repo" : "Live Demo"}
+                           </a>
+                         </Button>
+                         {project.github && !project.live.includes(project.github) && (
+                           <Button variant="outline" size="lg" className="rounded-xl flex-1 font-bold">
+                             <a href={project.github} target="_blank" className="w-full">View Code</a>
+                           </Button>
+                         )}
                        </div>
                     </CardContent>
                   </Card>
@@ -438,13 +457,19 @@ export default function DeveloperImranPortfolio() {
                     </p>
                     
                     <div className="space-y-6">
-                       <div className="flex items-center gap-4 group">
-                          <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                             <Mail className="h-6 w-6" />
+                       <div 
+                          className="flex items-center gap-4 group cursor-pointer"
+                          onClick={() => copyToClipboard("trximran775@gmail.com")}
+                       >
+                          <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-active:scale-95 shadow-lg shadow-primary/5">
+                             {copied ? <Check className="h-6 w-6" /> : <Mail className="h-6 w-6" />}
                           </div>
-                          <div>
-                            <div className="text-xs text-muted-foreground font-semibold uppercase tracking-widest">Email me</div>
-                            <div className="text-lg font-bold">trximran775@gmail.com</div>
+                          <div className="flex-1">
+                            <div className="text-xs text-muted-foreground font-semibold uppercase tracking-widest flex items-center justify-between gap-2">
+                              <span>{copied ? 'Copied to Clipboard!' : 'Email me'}</span>
+                              {!copied && <Copy className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-all duration-300" />}
+                            </div>
+                            <div className="text-lg font-bold group-hover:text-primary transition-colors">trximran775@gmail.com</div>
                           </div>
                        </div>
                        <div className="flex items-center gap-4 group">
@@ -495,6 +520,44 @@ export default function DeveloperImranPortfolio() {
             </div>
          </div>
       </footer>
+
+      {/* Back to Top */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 20 }}
+            className="fixed bottom-8 right-8 z-[60]"
+          >
+            <Button
+              variant="premium"
+              size="icon"
+              className="w-14 h-14 rounded-2xl shadow-2xl"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              <ArrowUp className="h-6 w-6" />
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toastVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: 20, x: "-50%" }}
+            className="fixed top-12 left-1/2 z-[100] bg-slate-900 border border-primary/30 px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3"
+          >
+            <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+              <Check className="h-4 w-4" />
+            </div>
+            <span className="font-bold text-sm text-foreground">Email copied to clipboard!</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

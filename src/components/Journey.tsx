@@ -127,7 +127,7 @@ export default function Journey() {
                       {item.icon}
                     </div>
                     <h3 className="text-2xl font-extrabold mb-3 group-hover:text-primary transition-colors tracking-tight text-foreground">{item.title}</h3>
-                    <p className="text-muted-foreground dark:text-slate-300 text-base leading-[1.7] font-medium">
+                    <p className="text-muted-foreground text-base leading-[1.7] font-medium">
                       {item.description}
                     </p>
                   </CardContent>
@@ -193,7 +193,7 @@ export default function Journey() {
 
             <div className="grid gap-4">
               {futureGoals.map((goal, idx) => (
-                <Card key={idx} className="bg-accent/30 border-none group hover:bg-accent/50 transition-colors">
+                <Card key={idx} className="bg-background/85 border-border/70 group hover:bg-accent/70 transition-colors">
                   <CardContent className="p-6 flex items-center gap-6">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-extrabold text-base">
                       0{idx + 1}
