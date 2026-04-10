@@ -263,7 +263,7 @@ export default function DeveloperImranPortfolio() {
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" className="rounded-2xl group h-14 px-8 text-lg">
-                  <a href="https://drive.google.com/file/d/18pYsr3IqYLhpWjJKDw4u9_zHpiT7dRq6/view?usp=sharing" target="_blank" className="flex items-center">
+                  <a href="https://drive.google.com/file/d/1klIt4ecDMbu6hx3NwkoK3hYwy90aPM2u/view?usp=sharing" target="_blank" className="flex items-center">
                     <Download className="mr-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" /> View Resume
                   </a>
                 </Button>
@@ -483,7 +483,7 @@ export default function DeveloperImranPortfolio() {
                        </div>
                        <div className="flex items-center gap-4 group">
                           <Button variant="outline" className="w-full rounded-2xl h-12 border-primary/20 hover:border-primary">
-                             <a href="https://drive.google.com/file/d/18pYsr3IqYLhpWjJKDw4u9_zHpiT7dRq6/view?usp=sharing" target="_blank" className="flex items-center justify-center w-full">
+                             <a href="https://drive.google.com/file/d/1klIt4ecDMbu6hx3NwkoK3hYwy90aPM2u/view?usp=sharing" target="_blank" className="flex items-center justify-center w-full">
                                 <Download className="mr-2 h-5 w-5" /> View Resume / CV
                              </a>
                           </Button>
