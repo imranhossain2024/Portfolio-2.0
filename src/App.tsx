@@ -107,7 +107,7 @@ export default function DeveloperImranPortfolio() {
       title: "BloodBond — Blood Donation Network",
       description: "A comprehensive MERN stack platform connecting blood donors with recipients. Features real-time coordination, verified matching, and a robust admin dashboard for tracking donations.",
       stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
-      image: "https://images.unsplash.com/photo-1615461066841-6116ecaaba7d?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1767449441925-737379bc2c4d?q=80&w=1200&h=800&auto=format&fit=crop",
       live: "https://blood-donation-roan.vercel.app/",
       github: "https://github.com/imranhossain2024",
       accent: "from-red-500 to-rose-600"
@@ -263,7 +263,7 @@ export default function DeveloperImranPortfolio() {
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" className="rounded-2xl group h-14 px-8 text-lg">
-                  <a href="https://drive.google.com/file/d/1klIt4ecDMbu6hx3NwkoK3hYwy90aPM2u/view?usp=sharing" target="_blank" className="flex items-center">
+                  <a href="https://drive.google.com/file/d/16GtfpfGd4ebu4mNBNw3YG0pB4S-ySSa4/view?usp=sharing" target="_blank" className="flex items-center">
                     <Download className="mr-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" /> View Resume
                   </a>
                 </Button>
@@ -483,7 +483,7 @@ export default function DeveloperImranPortfolio() {
                        </div>
                        <div className="flex items-center gap-4 group">
                           <Button variant="outline" className="w-full rounded-2xl h-12 border-primary/20 hover:border-primary">
-                             <a href="https://drive.google.com/file/d/1klIt4ecDMbu6hx3NwkoK3hYwy90aPM2u/view?usp=sharing" target="_blank" className="flex items-center justify-center w-full">
+                             <a href="https://drive.google.com/file/d/16GtfpfGd4ebu4mNBNw3YG0pB4S-ySSa4/view?usp=sharing" target="_blank" className="flex items-center justify-center w-full">
                                 <Download className="mr-2 h-5 w-5" /> View Resume / CV
                              </a>
                           </Button>
