@@ -15,29 +15,29 @@ I build modern, responsive, and scalable web applications using the latest techn
 
 ## 🛠️ Tech Stack
 
-* ⚛️ Next.js
-* ⚛️ React.js
-* 🎨 Tailwind CSS
-* 📜 JavaScript (ES6+)
-* 🔥 Firebase (if used)
-* 🗄️ MongoDB (if used)
+- ⚛️ Next.js
+- ⚛️ React.js
+- 🎨 Tailwind CSS
+- 📜 JavaScript (ES6+)
+- 🔥 Firebase (if used)
+- 🗄️ MongoDB (if used)
 
 ---
 
 ## ✨ Features
 
-* 🌐 Fully Responsive Design
-* ⚡ Fast Performance (Next.js Optimized)
-* 🎯 Clean & Modern UI
-* 📱 Mobile Friendly
-* 📂 Project Showcase Section
-* 📧 Contact Form (if available)
+- 🌐 Fully Responsive Design
+- ⚡ Fast Performance (Next.js Optimized)
+- 🎯 Clean & Modern UI
+- 📱 Mobile Friendly
+- 📂 Project Showcase Section
+- 📧 Contact Form (if available)
 
 ---
 
 ## 📸 Screenshots
 
-*Add your project screenshots here*
+_Add your project screenshots here_
 
 ---
 
@@ -83,9 +83,9 @@ npm run dev
 
 ## 📬 Contact Me
 
-* 📧 Email: [trximran775@gmail.com](mailto:trximran775@gmail.com)
-* 💼 LinkedIn: https://linkedin.com/in/your-profile
-* 🐙 GitHub: https://github.com/imranhossain2024
+- 📧 Email: [trximran775@gmail.com](mailto:trximran775@gmail.com)
+- 💼 LinkedIn: https://linkedin.com/in/your-profile
+- 🐙 GitHub: https://github.com/imranhossain2024
 
 ---
 
@@ -97,4 +97,4 @@ This project is open-source and available under the **MIT License**.
 
 ## ⭐ Support
 
-If you like this project, please ⭐ the repo and share your feedback!
+If you like this project, please ⭐ the repo and share your feedback !
